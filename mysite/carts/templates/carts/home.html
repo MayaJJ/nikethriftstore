@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'carts/css/home.css' %}" />
+{% endblock css %}
+{% block container %}
+<div class="container">
+
+  {% if request.session.role %}
+  <div class="title sm-top">Your Cart</div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      {% for item in cart_item %}
+      <div class="cart-item container-fluid">
+        <div class="row">
+          <a href="{% url 'thrifts:detail' item.product.id %}" class="col">
+            <img src="{{ item.product.img.url }} " alt="snapshot" class="img-thumbnail" />
+          </a>
+          <div class="col d-flex flex-column justify-content-center">
+            <div class="subtitle">{{ item.product.name }}</div>
+            <div class="subtitle">{{ item.product.price }}</div>
+          </div>
+          <div class="col d-flex  align-items-center justify-content-end">
+            <a href="{% url 'carts:delete' item.shopping_cart.id  item.product.id %}" class="btn btn-danger">Remove</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div>Your cart is empty.</div>
+      {% endfor %}
+    </div>
+    <div class="col-sm-12 col-md-4 ">
+      {% if cart_item %}
+      <div class="checkout-container">
+        <div class="subtitle">Total Price</div>
+        <div class="subtitle text-right">{{ cart_item.0.shopping_cart.price }}</div>
+      </div>
+      <a href="{% url 'orders:add' cart_item.0.shopping_cart.id %}" class="btn btn-secondary">Check Out</a>
+      {% endif %}
+    </div>
+
+  </div>
+  {% else %}
+  <div class="title">Please log in to see the page.</div>
+  {% endif %}
+
+</div>
+
+
+</div>
+
+{% endblock container %}

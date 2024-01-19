@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'thrifts/css/home.css' %}" />
+ <style>
+    .login-container {
+      background-color: #f8f9fa;
+    }
+
+    .login-card {
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px; /* Adjusted margin top for spacing */
+    }
+
+    .login-form {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .login-form label {
+      font-weight: bold;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .login-form button {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #0056b3;
+    }
+
+    .create-account-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .create-account-link a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .create-account-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <style>
+    @media (max-width: 576px) {
+      .login-container {
+        /* padding-top: 20px; */
+      }
+
+      .login-card {
+        margin-top: 0;
+        box-shadow: none;
+      }
+
+      .login-form {
+        /* margin-top: 20px; */
+      }
+    }
+  </style>
+{% endblock css %}
+
+{% block js %}
+  <script src="{% static 'thrifts/js/home.js' %}"></script>
+{% endblock js %}
+
+{% block container %}
+  {% if request.session.username %}
+    <div class="container py-5 dashboard-container">
+      <div class="row pt-5 pt-md-0">
+        <div class="col-sm-12 col-md-6 selling-list-container">
+          <h3>Dashboard</h3>
+          <h4>{{ role_titles.request.session.role }}</h4>
+          {% for selling in selling_list %}
+            <section class="selling container-fluid" data-delete-url="{% url 'thrifts:delete' selling.id %}">
+              <div class="row">
+                <div class="col-3">
+                  <img src="{{ selling.img.url }}" alt="selling-snapshot" class="img-thumbnail">
+                </div>
+                <div class="col-6">
+                  <h4>{{ selling.name }}</h4>
+                  <h4>$ {{ selling.price }}</h4>
+                  <p>{{ selling.date_posted | naturaltime }}</p>
+                </div>
+                <div class="col-3">
+                  <a href="{% url 'thrifts:edit' selling.id %}">
+                    <button class="btn btn-secondary">Edit</button>
+                  </a>
+                  {% if request.session.role == 'admin' %}
+                    <button type="button" class="btn btn-danger selling-delete" data-toggle="modal"
+                      data-target="#confirmDeleteModal">Delete</button>
+                  {% endif %}
+                </div>
+              </div>
+            </section>
+          {% endfor %}
+        </div>
+        <div class="col-sm-12 col-md-6">
+          {% if request.session.role == 'admin' %}
+            <a href="{% url 'users:list' %}" class="btn btn-secondary">Change Role</a>
+          {% endif %}
+          {% include 'feeds/feeds.html' %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="container py-5 login-container">
+      <div class="row pt-5 pt-md-0">
+        <div class="col-sm-12 col-md-6 py-5 py-md-0 mt-5">
+          <img src="{% static 'thrifts/thrift.jpg' %}" alt="logo" class="img-fluid mb-4">
+        </div>
+        <div class="col-sm-12 col-md-6 mt-5">
+          <div class="card login-card">
+            <div class="card-body login-form">
+              <h3 class="card-title text-center mb-4">Login</h3>
+              <form method="POST" action="{% url 'users:login' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Log In</button>
+                </div>
+              </form>
+              <div class="create-account-link">
+                <p>Don't have an account? <a href="{% url 'users:register' %}">Create New Account</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" data-url="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Do you really want to delete this product?</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          The action can not be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger selling-delete__confirm" data-dismiss="modal">
+            Delete
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock container %}

@@ -1,0 +1,34 @@
+:root {
+  --main-maroon: #145063;
+  --main-orange: #e87722;
+  --main-stone: #75787b;
+  --main-teal: #508590;
+}
+
+.cart-item img {
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+}
+
+.cart-item {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 16px 0;
+}
+
+.cart-item:hover {
+  background-color: rgb(232, 232, 232);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--main-stone);
+}
+
+.checkout-container {
+  padding: 8px;
+  margin: 0 0 16px 0;
+  border: 1.5px solid var(--main-stone);
+  border-radius: 8px;
+}
