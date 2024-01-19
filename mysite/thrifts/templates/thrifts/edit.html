@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'thrifts/css/edit.css' %}" />
+<script src="{% static 'thrifts/js/edit.js' %}"></script>
+{% endblock css %}
+{% block container %}
+
+{% if  request.session.username %}
+<div class="breadcrum">
+  <a href="{% url 'thrifts:home' %}">My Account</a>
+  <span>></span>
+  <span>Sell an item</span>
+</div>
+<!-- create product -->
+<div class="create-product">
+  <!-- product form -->
+  <form class="edit-form" action="{% url 'thrifts:edit' product.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="edit-form__left">
+      <div>
+        <label for="product_name">Product</label>
+        <input type="text" id="product_name" name="product_name" placeholder="Airpods pro" value="{{ product.name }}" />
+      </div>
+      <div>
+        <label for="price">Price</label>
+        <input type="text" id="price" name="price" placeholder="30" value="{{ product.price }}" />
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <select name="category" data-selected="{{ product.category }}" class="product-category">
+          <option value=""></option>
+          <option id="electronics" value="electronics">Electronics</option>
+          <option id="fashion" value="fashion">Fashion</option>
+          <option id="food" value="food">Food</option>
+          <option id="home_decoration" value="home_decorations">Home Decorations</option>
+          <option id="sports" value="sports">Sports</option>
+        </select>
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"
+          placeholder="The condition of your item.">{{ product.description }}</textarea>
+      </div>
+    </div>
+    <div class="edit-form__right">
+      <!-- image upload -->
+      <div>
+        <label for="image">Image</label>
+        <div>
+          <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+          <button class="upload">Upload</button>
+          <button>Delete</button>
+        </div>
+        <img src="{{ product.img.url }} " alt="upload image" id="preview-image" />
+      </div>
+      <!-- post product -->
+      <input type="submit" class="form-action-btn">
+      <a href="{% url 'thrifts:home' %}" class="form-action-btn">Return</a>
+    </div>
+  </form>
+</div>
+{% else %}
+<div class="container vh-100">
+  <h3>You do not have access to this page.</h3>
+  <a href="{% url 'thrifts:home' %}">Login</a> to have explore more stuffs!
+</div>
+{% endif %}
+{% endblock container %}
