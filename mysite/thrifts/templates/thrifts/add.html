@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'thrifts/css/add.css' %}" />
+<script src="{% static 'thrifts/js/add.js' %}"></script>
+{% endblock css %}
+{% block container %}
+
+{% if  request.session.username %}
+<div class="breadcrum">
+  <a href="{% url 'thrifts:home' %}">My Account</a>
+  <span>></span>
+  <span>Sell an item</span>
+</div>
+<!-- create product -->
+<div class="create-product">
+  <!-- product form -->
+  <form class="create-form" action="{% url 'thrifts:sell' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="create-form__left">
+      <div>
+        <label for="product_name">Product</label>
+        <input type="text" id="product_name" name="product_name" placeholder="Airpods pro" />
+      </div>
+      <div>
+        <label for="price">Price</label>
+        <input type="text" id="price" name="price" placeholder="30" />
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <select name="category">
+          <option value=""></option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion</option>
+          <option value="food">Food</option>
+          <option value="home_decorations">Home Decorations</option>
+          <option value="sports">Sports</option>
+        </select>
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="The condition of your item."></textarea>
+      </div>
+    </div>
+    <div class="create-form__right">
+      <!-- image upload -->
+      <div>
+        <label for="image">Image</label>
+        <div>
+          <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+          <button class="upload">Upload</button>
+          <button>Delete</button>
+        </div>
+        <img src="#" alt="upload image" id="preview-image" />
+      </div>
+      <!-- post product -->
+      <input type="submit" class="form-action-btn submit-form" data-url="{% url 'thrifts:sell' %}">
+      <a href="{% url 'thrifts:home' %}" class="form-action-btn">Return</a>
+    </div>
+  </form>
+</div>
+{% else %}
+<div class="container vh-100">
+  <h3>You do not have access to this page.</h3>
+  <a href="{% url 'thrifts:home' %}">Login</a> to have explore more stuffs!
+</div>
+{% endif %}
+{% endblock container %}
