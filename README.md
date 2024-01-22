@@ -288,6 +288,27 @@ Visit **http://127.0.0.1:8000/** to access the project.
 
 
 
+3. Technologies/Languages Used
+
+Technologies and Languages Utilized
+3.1 - GitHub: This integrated development environment (IDE) is recommended for Code Institute students and was my chosen platform for developing this project.
+
+3.2 - HTML5: I utilized HTML5 as the markup language for this project, structuring the content of the website.
+
+3.3 - CSS: CSS played a crucial role in enhancing and refining the presentation of the website, contributing to an aesthetically pleasing user experience.
+
+3.4 - JavaScript: JavaScript, often abbreviated as JS, is a programming language that adheres to the ECMAScript specification. It is a core technology of the World Wide Web, working alongside HTML and CSS.
+
+3.5 - jQuery: jQuery is a fast, compact, and feature-rich JavaScript library. It simplifies tasks such as HTML document traversal and manipulation, event handling, animation, and Ajax, providing an easy-to-use API compatible with various browsers.
+
+3.6 - Python: Python, an interpreted high-level general-purpose programming language, was employed in this project. Its design philosophy emphasizes code readability, featuring significant indentation. Python's constructs and object-oriented approach facilitate the development of clear, logical code for projects of varying scales.
+
+3.7 - Django: Django is a high-level Python web framework designed to encourage rapid development and maintain a clean, pragmatic design. Developed by experienced professionals, Django streamlines many aspects of web development, allowing developers to focus on creating their applications without reinventing the wheel. It is both free and open source.
+
+3.8 - Bootstrap: Bootstrap, a free and open-source CSS framework, is tailored for responsive, mobile-first front-end web development. It provides design templates for typography, forms, buttons, navigation, and other interface components, utilizing CSS and JavaScript.
+
+
+
 
 **Media**
 Images and media sources used in the project.
