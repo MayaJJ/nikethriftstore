@@ -318,9 +318,29 @@ Special thanks or credits to individuals or organizations that contributed to th
 
 _**Future Features To Develop**_
 Social media login
+
+
+
 Social media share buttons
+
+
+
 Paypal Payment Option
+
+
+
 Wishlist
+
+
+
+
 Sort by price functionality
+
+
+
+
 Dark Mode
+
+
+
 Shopping Cart
