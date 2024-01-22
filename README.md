@@ -9,6 +9,10 @@ The project consists of several apps, each serving a distinct purpose:
    
 **Models:**
 ShoppingCart: Represents a shopping cart with user, price, and creation date.
+
+
+
+
 CartItem: Represents an item in the shopping cart, linking to the Product model.
 
 
@@ -18,7 +22,15 @@ CartItem: Represents an item in the shopping cart, linking to the Product model.
 
 **Views**:
 add_to_cart: Adds a product to the user's shopping cart.
+
+
+
+
 cart: Displays the user's shopping cart.
+
+
+
+
 delete_from_cart: Deletes an item from the shopping cart.
 
 
@@ -61,7 +73,14 @@ Comment: Represents a comment with text, seller, buyer, and posting date.
 
 **Views:**
 add_comment: Adds comments.
+
+
+
 edit_comment: Edit comments.
+
+
+
+
 delete_comment: Update comments.
 
 
@@ -105,6 +124,10 @@ This app includes the main project settings and configurations.
 
 **Models:**
 Order: Represents an order with a user, price, and creation date.
+
+
+
+
 OrderItem: Represents an item in an order, linking to the Product model.
 
 
@@ -156,11 +179,35 @@ Product: Represents a product with name, price, image, description, seller, cate
 
 **Views:**
 home: Displays a list of products based on the user's role.
+
+
+
+
 list: Displays a list of products with optional sorting, category filtering, and search functionality.
+
+
+
+
 detail: Displays detailed information about a specific product.
+
+
+
+
 edit: Allows editing of a product's details.
+
+
+
+
 delete: Deletes a product (Ajax request).
+
+
+
+
 sell: Handles the addition of a new product.
+
+
+
+
 seller: Displays information about a seller.
 
 
@@ -179,6 +226,10 @@ seller: Displays information about a seller.
 
 **Models:**
 Details: Represents additional details for a user, including role and birthdate.
+
+
+
+
 Signals:
 create_user_details: Signal to create Details instance when a new User is created.
 
@@ -192,11 +243,38 @@ create_user_details: Signal to create Details instance when a new User is create
 
 **How to Run**
 Install Python and Django.
+
+
+
+
+
 Clone this repository.
-Run pip install -r requirements.txt to install dependencies.
-Run python manage.py migrate to apply database migrations.
-Run python manage.py createsuperuser to create an admin user.
-Run python manage.py runserver to start the development server.
+
+
+
+
+
+Run **pip install -r requirements.txt** to install dependencies.
+
+
+
+
+Run **python manage.py migrate** to apply database migrations.
+
+
+
+
+
+Run **python manage.py createsuperuser** to create an admin user.
+
+
+
+
+Run **python manage.py runserver** to start the development server.
+
+
+
+
 Visit **http://127.0.0.1:8000/** to access the project.
 
 
