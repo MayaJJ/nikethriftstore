@@ -6,10 +6,13 @@ NikeThrift Store is a Django-based E-Commerce project developed by Stephen Mc Go
 The project consists of several apps, each serving a distinct purpose:
 
 1. **Carts App**
+   
 **Models:**
 ShoppingCart: Represents a shopping cart with user, price, and creation date.
 CartItem: Represents an item in the shopping cart, linking to the Product model.
 **------------------------**
+
+
 **Views**:
 add_to_cart: Adds a product to the user's shopping cart.
 cart: Displays the user's shopping cart.
