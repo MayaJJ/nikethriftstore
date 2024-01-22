@@ -3,12 +3,16 @@
 
 **Introduction**
 NikeThrift Store is a Django-based E-Commerce project developed by Stephen Mc Govern. This project encompasses various apps that collectively create a dynamic and functional online thrift store. Each app plays a specific role in managing different aspects of the E-Commerce platform, providing features for users, sellers, and administrators.
+![image](https://github.com/MayaJJ/nikethriftstore/assets/127303012/8810530f-3213-419f-b07e-9798ed738db0)
+
 
 **Project Structure**
 The project consists of several apps, each serving a distinct purpose:
 
 1. **Carts App**
-   
+
+   ![image](https://github.com/MayaJJ/nikethriftstore/assets/127303012/e665d56c-235b-48bf-bac8-81465452c05c)
+
 **Models:**
 ShoppingCart: Represents a shopping cart with user, price, and creation date.
 
@@ -223,6 +227,7 @@ seller: Displays information about a seller.
 
 **17. Users App**
 
+![image](https://github.com/MayaJJ/nikethriftstore/assets/127303012/09865bda-5784-4fa6-b1d1-b633402529d0)
 
 
 
