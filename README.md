@@ -1,4 +1,6 @@
 **NikeThrift Store**
+![image](https://github.com/MayaJJ/nikethriftstore/assets/127303012/cec60377-f970-44ae-a123-05b1b1a42674)
+
 **Introduction**
 NikeThrift Store is a Django-based E-Commerce project developed by Stephen Mc Govern. This project encompasses various apps that collectively create a dynamic and functional online thrift store. Each app plays a specific role in managing different aspects of the E-Commerce platform, providing features for users, sellers, and administrators.
 
