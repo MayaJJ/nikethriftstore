@@ -1,4 +1,4 @@
-**NikeThrift Store**
+**Thrift Store**
 ![image](https://github.com/MayaJJ/nikethriftstore/assets/127303012/cec60377-f970-44ae-a123-05b1b1a42674)
 
 **Introduction**
