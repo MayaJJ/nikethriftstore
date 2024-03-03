@@ -35,7 +35,12 @@ SECRET_KEY = 'rasskxtq-x9vyxgcc63uz_buc$*#%yq!m47gs_3zmng%a)mb=='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thrifts-app.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['thrifts-app.herokuapp.com', '127.0.0.1', '8000-mayajj-thriftstore-691709msbp1.ws-us108.gitpod.io']
+
+CSRF_COOKIE_DOMAIN = 'mayajj-thriftstore-691709msbp1.ws-us108.gitpod.io'
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://8000-mayajj-thriftstore-691709msbp1.ws-us108.gitpod.io']
+CSRF_COOKIE_DOMAIN = '88000-mayajj-thriftstore-691709msbp1.ws-us108.gitpod.io'
 
 
 # Application definition
@@ -102,11 +107,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'store',
+            'NAME': 'railway',
             'USER': 'postgres',
-            'PASSWORD': 'myth123.',
-            'HOST': 'localhost',
-            'PORT': '5432',
+            'PASSWORD': 'gEfgaCdCg1Cec6f5g*f-*cF4Fae4-E2-',
+            'HOST': 'monorail.proxy.rlwy.net',
+            'PORT': '37224',
         }
     }
 
@@ -175,3 +180,6 @@ ABSOLUTE_URL_OVERRIDES = {
 # AWS_S3_FILE_OVERWRITE = False
 # AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

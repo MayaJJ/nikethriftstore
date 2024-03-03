@@ -12,7 +12,7 @@ from feeds.models import Feed
 
 def register(request):
     if request.method == 'POST':
-        if is_ajax(request):
+        if is_ajax:
             username = request.POST.get('username')
             email = request.POST.get('email')
             password = request.POST.get('password')
@@ -34,7 +34,6 @@ def register(request):
     else:
         return render(request, 'users/register.html')
 
-
 def edit(request, username):
     if request.method == 'POST':
         if is_ajax:
@@ -42,24 +41,58 @@ def edit(request, username):
             user.first_name = request.POST.get('fName')
             user.last_name = request.POST.get('lName')
             user.email = request.POST.get('email')
-            user.details.birth = request.POST.get('birth')
+            
+            # Handle birth date
+            birth = request.POST.get('birth')
+            if birth:
+                user.details.birth = birth
             user.save()
+            
             return JsonResponse({'success': 'success', 'data': {'url': reverse('users:profile', args=[username])}}, status=200)
         else:
             return JsonResponse({'error': 'Invalid Ajax Request'}, status=400)
     else:
         user = User.objects.get(username=username)
         birth = user.details.birth
-        birth = birth.strftime("%Y-%m-%d")
+        if birth:
+            birth = birth.strftime("%Y-%m-%d")
         return render(request, 'users/edit.html', {'user': user, 'birth': birth})
 
+# def edit(request, username):
+#     if request.method == 'POST':
+#         if is_ajax:
+#             user = User.objects.get(username=username)
+#             user.first_name = request.POST.get('fName')
+#             user.last_name = request.POST.get('lName')
+#             user.email = request.POST.get('email')
+#             user.details.birth = request.POST.get('birth')
+#             user.save()
+#             return JsonResponse({'success': 'success', 'data': {'url': reverse('users:profile', args=[username])}}, status=200)
+#         else:
+#             return JsonResponse({'error': 'Invalid Ajax Request'}, status=400)
+#     else:
+#         user = User.objects.get(username=username)
+#         birth = user.details.birth
+#         birth = birth.strftime("%Y-%m-%d")
+#         return render(request, 'users/edit.html', {'user': user, 'birth': birth})
 
+
+# def profile(request, username):
+#     user = get_object_or_404(User, username=username)
+#     birth = user.details.birth
+#     birth = birth.strftime("%Y-%m-%d")
+#     comments = Comment.objects.filter(seller_username=username)
+#     feeds = Feed.objects.filter(user=user).order_by('-created_time')[:10]
+#     return render(request, 'users/profile.html', {'user': user, 'birth': birth, 'comments': comments, "feeds": feeds})
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     birth = user.details.birth
-    birth = birth.strftime("%Y-%m-%d")
+    if birth:
+        birth = birth.strftime("%Y-%m-%d")
+    
     comments = Comment.objects.filter(seller_username=username)
     feeds = Feed.objects.filter(user=user).order_by('-created_time')[:10]
+    
     return render(request, 'users/profile.html', {'user': user, 'birth': birth, 'comments': comments, "feeds": feeds})
 
 
