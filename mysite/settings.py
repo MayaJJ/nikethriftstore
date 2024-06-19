@@ -35,12 +35,12 @@ SECRET_KEY = 'rasskxtq-x9vyxgcc63uz_buc$*#%yq!m47gs_3zmng%a)mb=='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thrifttstore-4261a8d06598.herokuapp.com', '127.0.0.1', '8000-mayajj-thriftstore-691709msbp1.ws-us108.gitpod.io']
+ALLOWED_HOSTS = ['trifthstore-ced91f579723.herokuapp.com', '127.0.0.1', '8000-mayajj-thriftstore-691709msbp1.ws-us108.gitpod.io']
 
-CSRF_COOKIE_DOMAIN = 'thrifttstore-4261a8d06598.herokuapp.com'
+CSRF_COOKIE_DOMAIN = 'trifthstore-ced91f579723.herokuapp.com'
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['thrifttstore-4261a8d06598.herokuapp.com']
-CSRF_COOKIE_DOMAIN = 'thrifttstore-4261a8d06598.herokuapp.com'
+CSRF_TRUSTED_ORIGINS = ['trifthstore-ced91f579723.herokuapp.com']
+CSRF_COOKIE_DOMAIN = 'trifthstore-ced91f579723.herokuapp.com'
 
 # CSRF_COOKIE_DOMAIN = 'mayajj-thriftstore-691709msbp1.ws-us108.gitpod.io'
 # CSRF_COOKIE_SECURE = True
